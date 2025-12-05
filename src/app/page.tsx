@@ -1,0 +1,63 @@
+"use client";
+import { useAuth } from "../contexts/AuthContext";
+import { useHomePage } from "../hooks/useHomePage";
+import Header from "../components/header";
+import ProtectedRoute from "../components/ProtectedRoute";
+import {
+  WelcomeHeader,
+  DashboardStats,
+  QuickActions,
+  PerformanceOverview,
+  RecentActivity,
+  TipsAndInfo,
+  SystemStatus,
+  DashboardLoading,
+} from "../components/home";
+
+export default function Home() {
+  return (
+    <ProtectedRoute>
+      <HomeContent />
+    </ProtectedRoute>
+  );
+}
+
+function HomeContent() {
+  const { user, isAuthenticated } = useAuth();
+  const { stats, randomTips, timeOfDay } = useHomePage(isAuthenticated);
+
+  if (stats.loading) {
+    return <DashboardLoading />;
+  }
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+      <Header />
+
+      <div className="container mx-auto px-4 py-8">
+        <WelcomeHeader user={user} timeOfDay={timeOfDay} />
+
+        <DashboardStats stats={stats} />
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+          {/* Main Content */}
+          <div className="lg:col-span-2 flex flex-col gap-6">
+            <QuickActions />
+            <PerformanceOverview stats={stats} />
+            
+            {/* Bottom row for Tips and System Status */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+              <TipsAndInfo randomTips={randomTips} />
+              <SystemStatus />
+            </div>
+          </div>
+
+          {/* Sidebar */}
+          <div className="flex flex-col">
+            <RecentActivity />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
