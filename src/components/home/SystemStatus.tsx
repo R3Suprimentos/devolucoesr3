@@ -54,7 +54,7 @@ export const SystemStatus: React.FC = () => {
               <span className="text-purple-400 font-medium text-sm">Versão</span>
             </div>
             <p className="text-slate-300 text-sm">
-              v1.2.5 - Correção notas de Rio Verdde - 10/09/2025
+              v10.1 - Sistema reconstruído e migrado para hospedagem Ztech Sistemas - 21/05/2026
             </p>
           </div>
     </div>

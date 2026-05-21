@@ -54,7 +54,7 @@ export const TipsAndInfo: React.FC<TipsAndInfoProps> = ({ randomTips }) => {
               <span className="text-green-400 font-medium text-sm">Lembrete</span>
             </div>
             <p className="text-slate-300 text-sm">
-              Sempre que necessitar de ajuda, entre em contato com o suporte.
+              Sistema reconstruído e migrado para hospedagem Ztech Sistemas. Para suporte, acione pelo WhatsApp: <a href="https://wa.me/556231426268?text=Preciso%20de%20atendimento%20no%20sistema%20de%20Devolu%C3%A7%C3%B5es%20R3" target="_blank" rel="noopener noreferrer" className="text-green-400 underline">+55 (62) 3142-6268</a>
             </p>
           </div>
         </div>
